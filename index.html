@@ -1263,6 +1263,24 @@ function drawPDots(){
 }
 
 // ═══════════════════════ BOOT ═════════════════════════
+
+// Pre-load tutorial note if not already added
+(function(){
+  var already = JSON.parse(localStorage.getItem('ms_n') || '[]');
+  var hasNote = already.some(function(n){ return n.id === 'tutorial-shorts-dark'; });
+  if (!hasNote) {
+    var nota = {
+      id: 'tutorial-shorts-dark',
+      title: '🎬 Como Criar um Shorts Dark/Interessante',
+      body: '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n🛠️ FERRAMENTAS UTILIZADAS\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n🖼️ IA para gerar imagens:\n👉 https://www.piclumen.com/pt/\n\n🔊 IA para gerar vozes:\n👉 https://app.clipchamp.com\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💬 PROMPT PARA O CHATGPT\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\nEu vou criar um shorts de 30 segundos, vou usar 10 imagens (Cada imagem em 3 segundos), preciso que você crie uma história de algum acontecimento aleatório do superman, e me envie como se fosse o superman falando, sem narrativas, apenas acontecimentos, quero a versão do texto em português e a versão do texto em inglês.\n\nDepois altere o prompt que irei te enviar pra gerar cada imagem, com base na sua historinha. (Preciso que você coloque todas as características em cada prompt, para ficar todos perfeitos e semelhantes, não alterando o rosto e corpo do superman, apenas alterando o acontecimento conforme a história):\n\n3D cartoon-style scene of superman, maintaining his distinct look, in a vibrant, well-lit setting. He is wearing his iconic Suit, black underpants, and football boots. Superman has short dark hair with a slight fade and a smooth, clean-shaven face. His posture is confident yet relaxed, with a calm and approachable expression. The background is dynamic, bright, and welcoming, with daylight streaming through windows, creating a lively atmosphere. The animation style is Pixar-inspired with vibrant lighting, ensuring superman character design is clear and consistent.\n\nE por fim, me envie a história que você criou completa e direta, pra eu utilizar um aplicativo pra gerar esse áudio (em inglês) e usar nas imagens, tem que ser tudo bem sincronizado.\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n📋 PASSO A PASSO COMPLETO\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n1️⃣ Mande o prompt acima para o ChatGPT\n2️⃣ Pegue os 10 prompts de imagem gerados\n3️⃣ Cole cada prompt no Piclumen e gere as imagens\n4️⃣ Pegue o texto em inglês gerado pelo ChatGPT\n5️⃣ Cole o texto no Clipchamp e gere o áudio com voz IA\n6️⃣ Monte o vídeo: 10 imagens x 3 segundos cada = 30s\n7️⃣ Adicione o áudio sincronizado sobre as imagens\n8️⃣ Adicione música de fundo dark/épica baixinho\n9️⃣ Adicione legendas (use CapCut ou Clipchamp)\n🔟 Poste no YouTube Shorts!\n\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n💡 DICAS PARA FICAR DARK/INTERESSANTE\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n• Escolha histórias com tensão, perigo ou emoção\n• Use música épica/dramática de fundo\n• Legenda com fonte impactante (branca com borda preta)\n• Começo do vídeo tem que prender em 1 segundo\n• Hook forte: comece com algo chocante ou curioso\n• Hashtags: #superman #shorts #dc #viral #fyp',
+      date: new Date().toLocaleDateString('pt-BR')
+    };
+    already.unshift(nota);
+    localStorage.setItem('ms_n', JSON.stringify(already));
+    notes = already;
+  }
+})();
+
 renderVideos();
 initCal();
 renderCheck();
