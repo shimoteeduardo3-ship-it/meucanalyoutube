@@ -779,6 +779,18 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 var YT_API_KEY = 'AIzaSyCDy9KeUbIV9MIeqtLt-29tkr3O-OqwW6k';
 var YT_HANDLE      = 'wxyinsano8202';
 var YT_CHANNEL_ID  = '';
+// Limpa cache se o canal salvo não for o correto
+(function(){
+  var cachedCh = JSON.parse(localStorage.getItem('ms_ytch') || 'null');
+  if (cachedCh) {
+    var savedHandle = ((cachedCh.snippet||{}).customUrl||'').replace('@','').toLowerCase();
+    if (savedHandle && savedHandle !== YT_HANDLE.toLowerCase()) {
+      localStorage.removeItem('ms_ytch');
+      localStorage.removeItem('ms_ytchid');
+      localStorage.removeItem('ms_ytvids');
+    }
+  }
+})();
 var YT_BASE        = 'https://www.googleapis.com/youtube/v3';
 var ytChannelId    = localStorage.getItem('ms_ytchid') || '';
 var ytPageToken    = '';
